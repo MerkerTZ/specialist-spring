@@ -15,14 +15,13 @@
         http://www.springframework.org/schema/aop
    		http://www.springframework.org/schema/aop/spring-aop.xsd
         ">
-    <bean id="woodWindow" class="ru.specialist.building.WoodWindow"/>
-    <bean id="plasticWindow" class="ru.specialist.building.PlasticWindow"/>
-    <bean id="brick" class="ru.specialist.building.Brick"/>
-    <bean id="wood" class="ru.specialist.building.Wood"/>
+    <bean id="male" class="ru.specialist.person.Male"/>
+    <bean id="female" class="ru.specialist.person.Female"/>
 
-    <bean id="myHouse" class="ru.specialist.building.House">
-        <property name="wall" ref="wood"/>
-        <property name="window" ref="woodWindow"/>
-        <property name="layer" value="3"/>
+
+    <bean id="guest" class="ru.specialist.person.Person" lazy-init="true" scope="prototype">
+        <property name="age" value="20"/>
+        <property name="name" value="Sara"/>
+        <property name="gender" ref="female"/>
     </bean>
 </beans>
