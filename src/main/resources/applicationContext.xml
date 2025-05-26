@@ -15,14 +15,7 @@
         http://www.springframework.org/schema/aop
    		http://www.springframework.org/schema/aop/spring-aop.xsd
         ">
-    <bean id="woodWindow" class="ru.specialist.building.WoodWindow"/>
-    <bean id="plasticWindow" class="ru.specialist.building.PlasticWindow"/>
-    <bean id="brick" class="ru.specialist.building.Brick"/>
-    <bean id="wood" class="ru.specialist.building.Wood"/>
+    <context:property-placeholder location="house.properties"/>
+    <bean id="coords" class="ru.specialist.Coords" scope="prototype"/>
 
-    <bean id="myHouse" class="ru.specialist.building.House">
-        <property name="wall" ref="wood"/>
-        <property name="window" ref="woodWindow"/>
-        <property name="layer" value="3"/>
-    </bean>
 </beans>
