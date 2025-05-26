@@ -1,23 +1,33 @@
 package ru.specialist;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
+
 import java.util.Locale;
 
-public class Builder
-{
-    public Window createPlasticWindow(){
-        return new PlasticWindow();
-    }
-    public Window createWoodWindow(){
-        return new WoodWindow();
-    }
-    public Window createWindow(){
-        if(Locale.getDefault().getCountry().equals("RU"))
-            return createWoodWindow();
+@Configuration
+@ComponentScan("ru.specialist")
+public class Builder {
+    @Autowired
+    private PlasticWindow plasticWindow;
+    @Autowired
+    private WoodWindow woodWindow;
+
+    @Bean
+    @Scope("prototype")
+    public Window defaultWindow() {
+        if (Locale.getDefault().getCountry().equals("RU"))
+            return woodWindow;
         else
-            return createPlasticWindow();
+            return plasticWindow;
     }
 
-    public House createHouse(){
-        return new House(createWindow());
+    @Bean
+    public House myHouse() {
+        return new House(defaultWindow());
     }
 }
