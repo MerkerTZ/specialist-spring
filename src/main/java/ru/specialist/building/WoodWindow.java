@@ -1,5 +1,6 @@
-package ru.specialist;
+package ru.specialist.building;
 
+//POJO
 public class WoodWindow implements Window {
 
     public void open() {

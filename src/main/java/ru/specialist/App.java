@@ -1,14 +1,17 @@
 package ru.specialist;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import ru.specialist.building.House;
+
 public class App {
 
     public static void main (String[] args){
-//        House house = new House();
-//        PlasticWindow window1 = new PlasticWindow();
-//        WoodWindow window2 = new WoodWindow();
-//
-//        house.setWindow(window1);
-//        house.ventilate();
-    new Builder().createHouse().ventilate();
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+
+        House house = context.getBean(House.class);
+        house.buildWall();
+        house.getLayer();
+        house.ventilate();
     }
 }
