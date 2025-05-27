@@ -7,7 +7,6 @@ import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.annotation.PropertySource;
 import ru.specialist.graph.Scene;
 
-@ImportResource("annotateConfiguration.xml")
 public class App {
     public static void main(String[] args) {
         ApplicationContext context = new AnnotationConfigApplicationContext(GraphConfig.class);
