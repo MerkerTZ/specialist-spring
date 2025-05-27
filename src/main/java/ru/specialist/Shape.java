@@ -1,6 +1,6 @@
 package ru.specialist;
 
-abstract class Shape {
+public abstract class Shape {
     public abstract void draw();
 
     public static final String DEFAULT_COLOR = "black";
@@ -13,10 +13,12 @@ abstract class Shape {
     public void setColor(String color) {
         this.color = color;
     }
-    public Shape(String color){
+
+    public Shape(String color) {
         this.color = color;
     }
-    public Shape(){
+
+    public Shape() {
         this.color = DEFAULT_COLOR;
     }
 }

@@ -6,9 +6,11 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class App {
 
-    public static void main (String[] args){
+    public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 
-
+//        context.getBean("myPoint", Point.class).draw();
+//        context.getBean("myCircle", Circle.class).draw();
+        context.getBean("scene", Scene.class).draw();
     }
 }

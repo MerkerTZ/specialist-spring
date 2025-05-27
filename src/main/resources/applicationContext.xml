@@ -18,4 +18,32 @@
     <context:property-placeholder location="house.properties"/>
     <bean id="coords" class="ru.specialist.Coords" scope="prototype"/>
 
+    <bean id="myPoint" class="ru.specialist.Point" scope="prototype">
+        <constructor-arg ref="coords"/>
+        <property name="color" value="${point.color}"/>
+        <property name="x" value="${point.x}"/>
+        <property name="y" value="${point.y}"/>
+    </bean>
+
+    <bean id="myCircle" class="ru.specialist.Circle" scope="prototype">
+        <constructor-arg ref="coords"/>
+        <property name="color" value="${circle.color}"/>
+        <property name="x" value="${circle.x}"/>
+        <property name="y" value="${circle.y}"/>
+        <property name="radius" value="${circle.radius}"/>
+    </bean>
+    <bean id="scene" class="ru.specialist.Scene" scope="singleton" autowire="constructor">
+<!--        <property name="ls">-->
+<!--            <list>-->
+<!--                <ref bean="myPoint"/>-->
+<!--                <ref bean="myCircle"/>-->
+<!--            </list>-->
+<!--        </property>-->
+<!--        <constructor-arg>-->
+<!--            <list>-->
+<!--                <ref bean="myPoint"/>-->
+<!--                <ref bean="myCircle"/>-->
+<!--            </list>-->
+<!--        </constructor-arg>-->
+    </bean>
 </beans>
