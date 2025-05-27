@@ -33,6 +33,7 @@ public class Scene {
     }
 //    @PreDestroy
     public void close (){
-        System.out.println("Destroy Scene");
+        ls.forEach(obj-> obj.erase());
+//        System.out.println("scene close");
     }
 }

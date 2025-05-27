@@ -3,6 +3,8 @@ package ru.specialist.graph;
 public abstract class Shape {
     public abstract void draw();
 
+    public abstract void erase();
+
     public static final String DEFAULT_COLOR = "black";
     private String color;
 

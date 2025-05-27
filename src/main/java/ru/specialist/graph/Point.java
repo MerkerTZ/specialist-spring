@@ -50,6 +50,12 @@ public class Point extends Shape {
     public void draw() {
         System.out.printf("Point %s Color: %s  Hash: %d\n", coords, getColor(), coords.hashCode());
     }
+
+    @Override
+    public void erase() {
+        System.out.printf("Erase - Point %s Color: %s\n", coords, getColor());
+    }
+
     @PreDestroy
     public void close (){
         System.out.println("Destroy point");
