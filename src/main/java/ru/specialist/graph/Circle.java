@@ -5,8 +5,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-@Component("myCircle")
-@Scope("prototype")
+//@Component("myCircle")
+//@Scope("prototype")
 public class Circle extends Shape {
     private Coords center;
     private int radius;
@@ -25,7 +25,7 @@ public class Circle extends Shape {
         return radius;
     }
 
-    @Value("${circle.radius}")
+//    @Value("${circle.radius}")
     public void setRadius(int radius) {
         this.radius = radius;
     }
@@ -33,7 +33,7 @@ public class Circle extends Shape {
     public int getX() {
         return center.getX();
     }
-    @Value("${circle.x}")
+//    @Value("${circle.x}")
     public void setX(int x) {
         center.setX(x);
     }
@@ -41,11 +41,11 @@ public class Circle extends Shape {
     public int getY() {
         return center.getY();
     }
-    @Value("${circle.y}")
+//    @Value("${circle.y}")
     public void setY(int y) {
         center.setX(y);
     }
-    @Value("${circle.color}")
+//    @Value("${circle.color}")
     @Override
     public void setColor(String color) {
         super.setColor(color);

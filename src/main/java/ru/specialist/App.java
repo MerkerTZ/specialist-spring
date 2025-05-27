@@ -9,10 +9,11 @@ import ru.specialist.graph.Scene;
 
 public class App {
     public static void main(String[] args) {
-        ApplicationContext context = new AnnotationConfigApplicationContext(GraphConfig.class);
+        try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(GraphConfig.class)) {
 
 //        context.getBean("myPoint", Point.class).draw();
 //        context.getBean("myCircle", Circle.class).draw();
-        context.getBean(Scene.class).draw();
+            context.getBean(Scene.class).draw();
+        }
     }
 }
