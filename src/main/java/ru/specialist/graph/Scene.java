@@ -1,11 +1,15 @@
-package ru.specialist;
+package ru.specialist.graph;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-
+@Component
 public class Scene {
     private List<Shape> ls;
 
+    @Autowired
     public Scene(List<Shape> ls) {
         this.ls = ls;
 
