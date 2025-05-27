@@ -47,6 +47,6 @@ public class Point extends Shape {
 
     @Override
     public void draw() {
-        System.out.printf("Point %s Color: %s\n", coords, getColor());
+        System.out.printf("Point %s Color: %s  Hash: %d\n", coords, getColor(), coords.hashCode());
     }
 }

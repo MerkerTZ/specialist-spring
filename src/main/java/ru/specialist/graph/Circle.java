@@ -52,6 +52,6 @@ public class Circle extends Shape {
     }
     @Override
     public void draw() {
-        System.out.printf("Circle %s Radius: %d Color: %s\n", center.toString(), getRadius(), getColor());
+        System.out.printf("Circle %s Radius: %d Color: %s Hash: %d\n", center.toString(), getRadius(), getColor(), center.hashCode());
     }
 }
