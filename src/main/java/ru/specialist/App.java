@@ -1,19 +1,18 @@
 package ru.specialist;
 
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.ImportResource;
-import org.springframework.context.annotation.PropertySource;
-import ru.specialist.graph.Scene;
+import ru.specialist.dao.CourseDao;
+import ru.specialist.dao.CourseDaoConfig;
 
 public class App {
     public static void main(String[] args) {
-        try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(GraphConfig.class)) {
+        try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(CourseDaoConfig.class)) {
 
-//        context.getBean("myPoint", Point.class).draw();
-//        context.getBean("myCircle", Circle.class).draw();
-            context.getBean(Scene.class).draw();
+
+            CourseDao dao = context.getBean(CourseDao.class);
+            dao.findAll().forEach(d -> {System.out.println(d.toString());});
+            System.out.println(dao.findById(2));
+            dao.findByTitle("Web").forEach(str->System.out.println(str));
         }
     }
 }
