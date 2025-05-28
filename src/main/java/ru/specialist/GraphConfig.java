@@ -34,8 +34,7 @@ public class GraphConfig implements BeanNameAware {
         return c;
     }
 
-    @Bean
-    @Scope("prototype")
+
     public Point myPoint() {
         Point p = new Point(coords());
         p.setX(env.getProperty("point.x", Integer.class, 0));
