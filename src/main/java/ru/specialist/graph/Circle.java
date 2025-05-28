@@ -8,8 +8,12 @@ import org.springframework.stereotype.Component;
 //@Component("myCircle")
 //@Scope("prototype")
 public class Circle extends Shape {
-    private Coords center;
     private int radius;
+    private Coords center;
+
+    public Coords getCoords() {
+        return center;
+    }
 
     @Autowired
     public Circle(Coords center) {

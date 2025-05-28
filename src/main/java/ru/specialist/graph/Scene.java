@@ -32,8 +32,12 @@ public class Scene {
         }
     }
 //    @PreDestroy
-    public void close (){
-        ls.forEach(obj-> obj.erase());
-//        System.out.println("scene close");
+//    public void close (){
+//        ls.forEach(obj-> obj.erase());
+
+    /// /        System.out.println("scene close");
+//    }
+    public void erase() {
+        ls.forEach(obj -> obj.erase());
     }
 }
