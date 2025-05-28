@@ -10,9 +10,12 @@ public class App {
 
 
             CourseDao dao = context.getBean(CourseDao.class);
-            dao.findAll().forEach(d -> {System.out.println(d.toString());});
             System.out.println(dao.findById(2));
-            dao.findByTitle("Web").forEach(str->System.out.println(str));
+            System.out.println("");
+            dao.findAll().forEach(d-> System.out.println(d.toString()));
+//            dao.findAll().forEach(d -> {System.out.println(d.toString());});
+//            System.out.println(dao.findById(2));
+//            dao.findByTitle("Web").forEach(str->System.out.println(str));
         }
     }
 }

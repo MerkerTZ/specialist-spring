@@ -1,14 +1,21 @@
 package ru.specialist.dao;
 
+import jakarta.persistence.*;
+
+
+@Table(name = "courses")
+@Entity
 public class Course {
+    @Id
     private int id;
     private String title;
     private int length;
     private String description;
 
-public Course(){}
+    public Course() {
+    }
 
-    public Course(int id, String title, int length, String description){
+    public Course(int id, String title, int length, String description) {
         super();
         this.id = id;
         this.title = title;
@@ -16,6 +23,8 @@ public Course(){}
         this.description = description;
     }
 
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {
         return id;
     }
@@ -23,7 +32,7 @@ public Course(){}
     public void setId(int id) {
         this.id = id;
     }
-
+    @Column(name = "title")
     public String getTitle() {
         return title;
     }
@@ -31,7 +40,7 @@ public Course(){}
     public void setTitle(String title) {
         this.title = title;
     }
-
+    @Column(name = "length")
     public int getLength() {
         return length;
     }
@@ -39,7 +48,7 @@ public Course(){}
     public void setLength(int length) {
         this.length = length;
     }
-
+    @Column(name = "description")
     public String getDescription() {
         return description;
     }
@@ -53,3 +62,4 @@ public Course(){}
         return String.format("%-3d %-50s %4d", getId(), getTitle(), getLength());
     }
 }
+
