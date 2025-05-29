@@ -1,18 +1,16 @@
 package ru.specialist.dao;
 
-import org.apache.commons.dbcp2.BasicDataSource;
+import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
-import org.springframework.orm.hibernate5.HibernateTransactionManager;
-import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
-import org.springframework.transaction.TransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
@@ -21,6 +19,7 @@ import javax.sql.DataSource;
 @PropertySource("jdbc.properties")
 @ComponentScan("ru.specialist.dao")
 @EnableTransactionManagement
+@EnableJpaRepositories(basePackages = "ru.specialist.dao")
 public class DaoConfig {
 
     @Autowired
@@ -38,7 +37,7 @@ public class DaoConfig {
         return ds;
     }
 
-    @Bean
+    @Bean("entityManagerFactory")
     public LocalContainerEntityManagerFactoryBean emf() {
         LocalContainerEntityManagerFactoryBean emf = new
                 LocalContainerEntityManagerFactoryBean();
@@ -55,4 +54,9 @@ public class DaoConfig {
     public JpaTransactionManager transactionManager() {
         return new JpaTransactionManager(emf().getObject());
     }
+
+//    @Bean
+//    public PersistenceExceptionTranslationPostProcessor persistenceExceptionTranslationPostProcessor(){
+//        return new PersistenceExceptionTranslationPostProcessor();
+//    }
 }
