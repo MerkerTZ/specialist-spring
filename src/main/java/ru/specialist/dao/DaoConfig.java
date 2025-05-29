@@ -9,6 +9,9 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.TransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
@@ -18,7 +21,7 @@ import javax.sql.DataSource;
 @PropertySource("jdbc.properties")
 @ComponentScan("ru.specialist.dao")
 @EnableTransactionManagement
-public class CourseDaoConfig {
+public class DaoConfig {
 
     @Autowired
     private Environment env;
@@ -36,15 +39,20 @@ public class CourseDaoConfig {
     }
 
     @Bean
-    public LocalSessionFactoryBean sessionFactory() {
-        LocalSessionFactoryBean sf = new LocalSessionFactoryBean();
-        sf.setDataSource(webDataSource());
-        sf.setPackagesToScan("ru.specialist.dao");
-        return sf;
+    public LocalContainerEntityManagerFactoryBean emf() {
+        LocalContainerEntityManagerFactoryBean emf = new
+                LocalContainerEntityManagerFactoryBean();
+        //new org.springframework.orm.jpa.LocalEntityManagerFactoryBean()
+
+        emf.setDataSource(webDataSource());
+        emf.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
+        emf.setPackagesToScan("ru.specialist.dao");
+
+        return emf;
     }
 
     @Bean
-    public TransactionManager transactionManager() {
-        return new HibernateTransactionManager(sessionFactory().getObject());
+    public JpaTransactionManager transactionManager() {
+        return new JpaTransactionManager(emf().getObject());
     }
 }

@@ -2,11 +2,11 @@ package ru.specialist;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import ru.specialist.dao.CourseDao;
-import ru.specialist.dao.CourseDaoConfig;
+import ru.specialist.dao.DaoConfig;
 
 public class App {
     public static void main(String[] args) {
-        try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(CourseDaoConfig.class)) {
+        try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(DaoConfig.class)) {
 
 
             CourseDao dao = context.getBean(CourseDao.class);
@@ -15,7 +15,7 @@ public class App {
             dao.findAll().forEach(d-> System.out.println(d.toString()));
 //            dao.findAll().forEach(d -> {System.out.println(d.toString());});
 //            System.out.println(dao.findById(2));
-//            dao.findByTitle("Web").forEach(str->System.out.println(str));
+            dao.findByTitle("Web").forEach(str->System.out.println(str));
         }
     }
 }
