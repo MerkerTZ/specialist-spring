@@ -1,6 +1,6 @@
 package ru.specialist.dao;
 
-import org.apache.commons.dbcp.BasicDataSource;
+import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
@@ -17,6 +17,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
+import jakarta.transaction.TransactionManager;
 
 @Configuration
 @PropertySource("jdbc.properties")
@@ -63,6 +64,7 @@ public class DaoConfig {
     public CacheManager cacheManager() {
         return new ConcurrentMapCacheManager("teachersCache");
     }
+
 //    @Bean
 //    public PersistenceExceptionTranslationPostProcessor persistenceExceptionTranslationPostProcessor(){
 //        return new PersistenceExceptionTranslationPostProcessor();

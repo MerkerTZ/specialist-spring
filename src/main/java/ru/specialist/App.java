@@ -9,7 +9,7 @@ public class App {
         try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(DaoConfig.class)) {
 
 
-//            CourseDao courseDao = context.getBean(CourseDao.class);
+            CourseDao courseDao = context.getBean(CourseDao.class);
 //
 //            Course git = new Course();
 //            git.setTitle("GIT");
@@ -46,6 +46,10 @@ public class App {
 //            dao.findAll().forEach(d -> {System.out.println(d.toString());});
 //            System.out.println(dao.findById(2));
 //            dao.findByTitle("Web").forEach(str->System.out.println(str));
+
+            var rec = courseDao.getAverageAndMedianaLength();
+            System.out.printf("Average course length: %.2f\n", rec.average());
+            System.out.printf("Mediana course length: %.2f\n", rec.mediana());
         }
     }
 }

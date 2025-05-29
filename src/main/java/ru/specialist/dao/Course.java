@@ -2,8 +2,7 @@ package ru.specialist.dao;
 
 //import jakarta.persistence.*;
 
-import javax.persistence.*;
-
+import jakarta.persistence.*;
 
 
 @Table(name = "courses")
