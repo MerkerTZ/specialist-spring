@@ -2,6 +2,9 @@ package ru.specialist.dao;
 
 import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -20,6 +23,7 @@ import javax.sql.DataSource;
 @ComponentScan("ru.specialist.dao")
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = "ru.specialist.dao")
+@EnableCaching
 public class DaoConfig {
 
     @Autowired
@@ -55,6 +59,10 @@ public class DaoConfig {
         return new JpaTransactionManager(emf().getObject());
     }
 
+    @Bean
+    public CacheManager cacheManager() {
+        return new ConcurrentMapCacheManager("teachersCache");
+    }
 //    @Bean
 //    public PersistenceExceptionTranslationPostProcessor persistenceExceptionTranslationPostProcessor(){
 //        return new PersistenceExceptionTranslationPostProcessor();

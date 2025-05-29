@@ -41,6 +41,7 @@ public class App {
             teacherDao.findAll().forEach(d -> System.out.println(d.toString()));
 
             System.out.println(teacherDao.findTeacherByName("Иван"));
+            System.out.println(teacherDao.findTeacherByName("Иван"));
 
 //            dao.findAll().forEach(d -> {System.out.println(d.toString());});
 //            System.out.println(dao.findById(2));
